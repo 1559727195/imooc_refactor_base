@@ -24,7 +24,7 @@ public class RequestCenter {
 
   //根据参数发送所有post请求
   public static void getRequest(String url, RequestParams params, DisposeDataListener listener,
-      Class<?> clazz) {
+								Class<?> clazz) {
     CommonOkHttpClient.get(CommonRequest.
         createGetRequest(url, params), new DisposeDataHandle(listener, clazz));
   }

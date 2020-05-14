@@ -9,6 +9,7 @@ import com.imooc.ft_login.manager.UserManager;
 import com.imooc.lib_base.ft_login.model.LoginEvent;
 import com.imooc.lib_base.ft_login.model.user.User;
 import com.imooc.lib_network.okhttp.listener.DisposeDataListener;
+
 import org.greenrobot.eventbus.EventBus;
 
 /**

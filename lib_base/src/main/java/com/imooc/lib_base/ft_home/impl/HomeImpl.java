@@ -1,9 +1,11 @@
-package com.imooc.lib_base.ft_home.service.impl;
+package com.imooc.lib_base.ft_home.impl;
 
 import android.content.Context;
+
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.imooc.lib_base.ft_home.service.HomeService;
+import com.imooc.lib_base.ft_home.HomeService;
+
 
 /**
  * 对HomeService的包装，使接口使用更方便

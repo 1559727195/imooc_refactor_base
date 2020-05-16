@@ -6,7 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.imooc.ft_loading.R;
-import com.imooc.lib_base.ft_home.service.impl.HomeImpl;
+
+import com.imooc.lib_base.ft_home.impl.HomeImpl;
 import com.imooc.lib_commin_ui.base.BaseActivity;
 import com.imooc.lib_commin_ui.base.constant.Constant;
 import com.imooc.lib_pullalive.app.AliveJobService;

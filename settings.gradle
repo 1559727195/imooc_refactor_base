@@ -1,4 +1,4 @@
-include ':imooc_voice', ':ft_home', ':ft_loading', ':ft_login'
+include ':imooc_voice', ':ft_loading', ':ft_login', ':ft_home'
 
 include ':ft_audio'
 

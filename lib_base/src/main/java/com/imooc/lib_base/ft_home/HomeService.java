@@ -1,6 +1,7 @@
-package com.imooc.lib_base.ft_home.service;
+package com.imooc.lib_base.ft_home;
 
 import android.content.Context;
+
 import com.alibaba.android.arouter.facade.template.IProvider;
 
 /**

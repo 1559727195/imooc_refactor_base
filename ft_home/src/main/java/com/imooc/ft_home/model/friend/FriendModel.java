@@ -1,6 +1,7 @@
 package com.imooc.ft_home.model.friend;
 
 import com.imooc.lib_base.BaseModel;
+
 import java.util.ArrayList;
 
 /**

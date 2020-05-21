@@ -132,5 +132,8 @@
     <orderEntry type="module" module-name="lib_pullalive" />
     <orderEntry type="module" module-name="lib_commin_ui" />
     <orderEntry type="module" module-name="lib_base" />
+    <orderEntry type="module" module-name="lib_pullalive" />
+    <orderEntry type="module" module-name="lib_commin_ui" />
+    <orderEntry type="module" module-name="lib_base" />
   </component>
 </module>

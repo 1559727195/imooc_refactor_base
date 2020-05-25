@@ -1,6 +1,5 @@
-include ':imooc_voice', ':ft_loading', ':ft_login', ':ft_home'
+include ':imooc_voice', ':ft_loading', ':ft_login', ':ft_home', ':ft_audio'
 
-include ':ft_audio'
 
 include ':lib_update'
 

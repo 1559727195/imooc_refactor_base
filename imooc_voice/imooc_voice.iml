@@ -153,47 +153,5 @@
     <orderEntry type="module" module-name="ft_login" />
     <orderEntry type="module" module-name="ft_home" />
     <orderEntry type="module" module-name="ft_loading" />
-    <orderEntry type="module" module-name="lib_commin_ui" />
-    <orderEntry type="module" module-name="lib_network" />
-    <orderEntry type="module" module-name="lib_qrcode" />
-    <orderEntry type="module" module-name="lib_video" />
-    <orderEntry type="module" module-name="ft_audio" />
-    <orderEntry type="module" module-name="lib_webview" />
-    <orderEntry type="module" module-name="lib_update" />
-    <orderEntry type="module" module-name="lib_share" />
-    <orderEntry type="module" module-name="lib_image_loader" />
-    <orderEntry type="module" module-name="lib_pullalive" />
-    <orderEntry type="module" module-name="lib_base" />
-    <orderEntry type="module" module-name="ft_login" />
-    <orderEntry type="module" module-name="ft_home" />
-    <orderEntry type="module" module-name="ft_loading" />
-    <orderEntry type="module" module-name="lib_commin_ui" />
-    <orderEntry type="module" module-name="lib_network" />
-    <orderEntry type="module" module-name="lib_qrcode" />
-    <orderEntry type="module" module-name="lib_video" />
-    <orderEntry type="module" module-name="ft_audio" />
-    <orderEntry type="module" module-name="lib_webview" />
-    <orderEntry type="module" module-name="lib_update" />
-    <orderEntry type="module" module-name="lib_share" />
-    <orderEntry type="module" module-name="lib_image_loader" />
-    <orderEntry type="module" module-name="lib_pullalive" />
-    <orderEntry type="module" module-name="lib_base" />
-    <orderEntry type="module" module-name="ft_login" />
-    <orderEntry type="module" module-name="ft_home" />
-    <orderEntry type="module" module-name="ft_loading" />
-    <orderEntry type="module" module-name="lib_commin_ui" />
-    <orderEntry type="module" module-name="lib_network" />
-    <orderEntry type="module" module-name="lib_qrcode" />
-    <orderEntry type="module" module-name="lib_video" />
-    <orderEntry type="module" module-name="ft_audio" />
-    <orderEntry type="module" module-name="lib_webview" />
-    <orderEntry type="module" module-name="lib_update" />
-    <orderEntry type="module" module-name="lib_share" />
-    <orderEntry type="module" module-name="lib_image_loader" />
-    <orderEntry type="module" module-name="lib_pullalive" />
-    <orderEntry type="module" module-name="lib_base" />
-    <orderEntry type="module" module-name="ft_login" />
-    <orderEntry type="module" module-name="ft_home" />
-    <orderEntry type="module" module-name="ft_loading" />
   </component>
 </module>

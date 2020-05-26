@@ -3,40 +3,44 @@ package com.imooc.lib_base.ft_audio.model;
 import java.io.Serializable;
 
 /**
+ * Created by ZhuPengFei
+ * Create Date 2020/5/26 19:12
+ * Used
  * 音乐播放模块所用的AudioBean
  */
-public class CommonAudioBean implements Serializable {
+public class CommonAudioBean  implements Serializable {
 
-  public String id;
-  //地址
-  public String mUrl;
+	public String id;
+	//地址
+	public String mUrl;
 
-  //歌名
-  public String name;
+	//歌名
+	public String name;
 
-  //作者
-  public String author;
+	//作者
+	public String author;
 
-  //所属专辑
-  public String album;
+	//所属专辑
+	public String album;
 
-  public String albumInfo;
+	public String albumInfo;
 
-  //专辑封面
-  public String albumPic;
+	//专辑封面
+	public String albumPic;
 
-  //时长
-  public String totalTime;
+	//时长
+	public String totalTime;
 
-  public CommonAudioBean(String id, String mUrl, String name, String author, String album,
-      String albumInfo, String albumPic, String totalTime) {
-    this.id = id;
-    this.mUrl = mUrl;
-    this.name = name;
-    this.author = author;
-    this.album = album;
-    this.albumInfo = albumInfo;
-    this.albumPic = albumPic;
-    this.totalTime = totalTime;
-  }
+	public CommonAudioBean(String id, String mUrl, String name, String author, String album,
+						   String albumInfo, String albumPic, String totalTime) {
+		this.id = id;
+		this.mUrl = mUrl;
+		this.name = name;
+		this.author = author;
+		this.album = album;
+		this.albumInfo = albumInfo;
+		this.albumPic = albumPic;
+		this.totalTime = totalTime;
+	}
+
 }

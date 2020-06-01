@@ -17,6 +17,7 @@ import com.imooc.lib_audio.mediaplayer.core.AudioController;
 import com.imooc.lib_audio.mediaplayer.core.MusicService;
 import com.imooc.lib_audio.mediaplayer.db.GreenDaoHelper;
 import com.imooc.lib_audio.mediaplayer.model.AudioBean;
+import com.imooc.lib_image_loader.app.ImageLoaderManager;
 
 /**
  * Created by ZhuPengFei
@@ -54,7 +55,9 @@ public class NotificationHelper {
 
 		packageName = AudioHelper.getContext().getPackageName();
 		mAudioBean = AudioController.getInstance().getNowPlaying();
-		init
+		initNotification();
+		mListener = listener;
+		if (mListener != null) mListener.onNotificationInit();
 
 	}
 
@@ -92,7 +95,7 @@ public class NotificationHelper {
 					.setCustomBigContentView(mRemoteViews)//大布局
 					.setContent(mSmallRemoteViews);//正常布局，两个布局可以切换
 			mNotification = builder.build();
-			show
+			showLoadStatus(mAudioBean);
 		}
 	}
 
@@ -107,6 +110,30 @@ public class NotificationHelper {
 			mRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
 			mRemoteViews.setTextViewText(R.id.title_view, mAudioBean.name);
 			mRemoteViews.setTextViewText(R.id.tip_view, mAudioBean.album);
+
+			ImageLoaderManager.getInstance().displayImageForNotification(
+					AudioHelper.getContext(),mRemoteViews,R.id.image_view
+					,mNotification,NOTIFICATION_ID,mAudioBean.albumPic
+			);
+
+			//更新收藏view
+			if (null != GreenDaoHelper.selectFavourite(mAudioBean)) {
+				mRemoteViews.setImageViewResource(R.id.favourite_view, R.mipmap.note_btn_loved);
+			} else {
+				mRemoteViews.setImageViewResource(R.id.favourite_view, R.mipmap.note_btn_love_white);
+			}
+
+			//小布局也要更新
+			mSmallRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
+			mSmallRemoteViews.setTextViewText(R.id.title_view, mAudioBean.name);
+			mSmallRemoteViews.setTextViewText(R.id.tip_view, mAudioBean.album);
+			ImageLoaderManager.getInstance()
+					.displayImageForNotification(AudioHelper.getContext(), mSmallRemoteViews, R.id.image_view,
+							mNotification, NOTIFICATION_ID, mAudioBean.albumPic);
+
+			mNotificationManager.notify(NOTIFICATION_ID,mNotification);
+
+
 		}
 	}
 
@@ -130,7 +157,7 @@ public class NotificationHelper {
 		mSmallRemoteViews.setTextViewText(R.id.tip_view, mAudioBean.album);
 
 		//点击播放按钮广播
-		Intent playIntent = new Intent(MusicService.NotifacationReceiver.ACTION_STATUS_BAR)
+		Intent playIntent = new Intent(MusicService.NotifacationReceiver.ACTION_STATUS_BAR);
 		playIntent.putExtra(MusicService.NotifacationReceiver.EXTRA,
 				MusicService.NotifacationReceiver.EXTRA_PLAY);
 		PendingIntent playPendingIntent = PendingIntent.getBroadcast(
@@ -176,6 +203,37 @@ public class NotificationHelper {
 				,PendingIntent.FLAG_UPDATE_CURRENT);
 		mRemoteViews.setOnClickPendingIntent(R.id.favourite_view, favouritePendingIntent);
 	}
+	public Notification getNotification() {
+		return mNotification;
+	}
+
+
+	public void showPlayStatus() {
+		if (mRemoteViews != null) {
+			mRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
+			mSmallRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
+			mNotificationManager.notify(NOTIFICATION_ID, mNotification);
+		}
+	}
+
+	public void showPauseStatus() {
+		if (mRemoteViews != null) {
+			mRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_play_white);
+			mSmallRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_play_white);
+		//	mNotificationManager.notify(NOTIFICATION_ID, mNotification);
+			mNotificationManager.notify(NOTIFICATION_ID,mNotification);
+		}
+	}
+
+	public void changeFavouriteStatus(boolean isFavourite) {
+		if (mRemoteViews != null) {
+			mRemoteViews.setImageViewResource(R.id.favourite_view,
+					isFavourite ? R.mipmap.note_btn_loved : R.mipmap.note_btn_love_white);
+			mNotificationManager.notify(NOTIFICATION_ID, mNotification);
+		}
+	}
+
+
 
 	/**
 	 * 与音乐service的回调通信

@@ -3,6 +3,8 @@ package com.imooc.lib_audio.mediaplayer.db;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.imooc.lib_audio.app.AudioHelper;
+import com.imooc.lib_audio.mediaplayer.model.AudioBean;
+import com.imooc.lib_audio.mediaplayer.model.Favourite;
 
 /**
  * Created by ZhuPengFei
@@ -25,7 +27,47 @@ public class GreenDaoHelper {
 	 * 设置greenDao
 	 */
 	public static void initDatabase() {
-		mHelper = new DaoMaster.DevOpenHelper(AudioHelper.get)
+		mHelper = new DaoMaster.DevOpenHelper(AudioHelper.getContext(),DB_BAME,null);
+		mDb = mHelper.getWritableDatabase();
+		mDaoMaster = new DaoMaster(mDb);
+		mDaoSession = mDaoMaster.newSession();
 	}
+
+
+	/**
+	 * 添加感兴趣
+	 */
+	public static void addFavourite(AudioBean audioBean) {
+		FavouriteDao dao = mDaoSession.getFavouriteDao();
+		Favourite favourite = new Favourite();
+		favourite.setAudioId(audioBean.id);
+		favourite.setAudioBean(audioBean);
+		dao.insertOrReplace(favourite);
+	}
+
+	/**
+	 * 移除感兴趣
+	 */
+	public static void removeFavourite(AudioBean audioBean) {
+		FavouriteDao dao = mDaoSession.getFavouriteDao();
+		Favourite favourite =
+				dao.queryBuilder().where(FavouriteDao.Properties.AudioId.eq(audioBean.id)).unique();
+		dao.delete(favourite);
+	}
+
+
+
+	/**
+	 * 查找感兴趣
+	 */
+	public static Favourite selectFavourite(AudioBean audioBean) {
+		FavouriteDao dao = mDaoSession.getFavouriteDao();
+		Favourite favourite =
+				dao.queryBuilder().where(FavouriteDao.Properties.AudioId.eq(audioBean.id)).unique();
+		return favourite;
+	}
+
+
+
 
 }

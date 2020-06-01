@@ -1,9 +1,13 @@
 package com.imooc.lib_audio.app;
 
+import android.app.Activity;
 import android.content.Context;
 
+import com.imooc.lib_audio.mediaplayer.core.AudioController;
 import com.imooc.lib_audio.mediaplayer.core.MusicService;
 import com.imooc.lib_audio.mediaplayer.db.GreenDaoHelper;
+import com.imooc.lib_audio.mediaplayer.utils.Utils;
+import com.imooc.lib_audio.mediaplayer.view.MusicPlayerActivity;
 import com.imooc.lib_base.ft_audio.model.CommonAudioBean;
 
 import java.util.ArrayList;
@@ -24,10 +28,22 @@ public final class AudioHelper {
 
 	//外部启动MusicService方法
 	public static void startMusicService(ArrayList<CommonAudioBean> audios) {
-		MusicService.st
+		MusicService.startMusicService(Utils.convertFrom(audios));
+	}
+
+	public static void addAudio(Activity activity, CommonAudioBean bean) {
+		AudioController.getInstance().addAudio(Utils.convertFrom(bean));
+		MusicPlayerActivity.start(activity);
 	}
 
 
+	public static void pauseAudio() {
+		AudioController.getInstance().pause();
+	}
+
+	public static void resumeAudio() {
+		AudioController.getInstance().resume();
+	}
 
 	public static Context getContext() {
 		return mContext;

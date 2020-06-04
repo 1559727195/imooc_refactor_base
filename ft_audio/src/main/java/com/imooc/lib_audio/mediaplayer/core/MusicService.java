@@ -62,6 +62,27 @@ public class MusicService extends Service implements NotificationHelper.Notifica
 		registerBroadcastReceiver();
 	}
 
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+
+		if (intent == null) return super.onStartCommand(intent
+		,flags,startId);
+		mAudioBeans = (ArrayList<AudioBean>) intent.getSerializableExtra(DATA_AUDIOS);
+
+		if (ACTION_START.equals(intent.getAction())) {
+			//开始播放
+			playMusic();
+			//初始化前台Notification
+			NotificationHelper.getInstance().init(this);
+		}
+		return super.onStartCommand(intent, flags, startId);
+	}
+
+	private void playMusic() {
+		AudioController.getInstance().setQueue(mAudioBeans);
+		AudioController.getInstance().play();
+	}
+
 	private void registerBroadcastReceiver() {
 		if (mReceiver == null) {
 			mReceiver = new NotifacationReceiver();
